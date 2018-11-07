@@ -785,29 +785,6 @@
 			"constant": false,
 			"inputs": [
 				{
-					"name": "_feeWindow",
-					"type": "address"
-				},
-				{
-					"name": "_id",
-					"type": "uint256"
-				}
-			],
-			"name": "logFeeWindowCreated",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bool"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [
-				{
 					"name": "_controller",
 					"type": "address"
 				}
@@ -905,6 +882,29 @@
 				}
 			],
 			"name": "logAuctionTokensTransferred",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_disputeWindow",
+					"type": "address"
+				},
+				{
+					"name": "_id",
+					"type": "uint256"
+				}
+			],
+			"name": "logDisputeWindowCreated",
 			"outputs": [
 				{
 					"name": "",
@@ -2160,7 +2160,7 @@
 				},
 				{
 					"indexed": false,
-					"name": "feeWindow",
+					"name": "disputeWindow",
 					"type": "address"
 				},
 				{
@@ -2179,7 +2179,7 @@
 					"type": "uint256"
 				}
 			],
-			"name": "FeeWindowCreated",
+			"name": "DisputeWindowCreated",
 			"type": "event"
 		},
 		{
@@ -2852,6 +2852,33 @@
 			"type": "function"
 		},
 		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_source",
+					"type": "address"
+				},
+				{
+					"name": "_destination",
+					"type": "address"
+				},
+				{
+					"name": "_attotokens",
+					"type": "uint256"
+				}
+			],
+			"name": "trustedDisputeWindowTransfer",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
 			"constant": true,
 			"inputs": [],
 			"name": "getLegacyRepToken",
@@ -2910,33 +2937,6 @@
 			],
 			"payable": false,
 			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [
-				{
-					"name": "_source",
-					"type": "address"
-				},
-				{
-					"name": "_destination",
-					"type": "address"
-				},
-				{
-					"name": "_attotokens",
-					"type": "uint256"
-				}
-			],
-			"name": "trustedFeeWindowTransfer",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bool"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
 			"type": "function"
 		},
 		{
@@ -3688,6 +3688,33 @@
 		},
 		{
 			"constant": false,
+			"inputs": [
+				{
+					"name": "_source",
+					"type": "address"
+				},
+				{
+					"name": "_destination",
+					"type": "address"
+				},
+				{
+					"name": "_attotokens",
+					"type": "uint256"
+				}
+			],
+			"name": "trustedDisputeWindowTransfer",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
 			"inputs": [],
 			"name": "migrateFromLegacyReputationToken",
 			"outputs": [
@@ -3726,33 +3753,6 @@
 			],
 			"payable": false,
 			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [
-				{
-					"name": "_source",
-					"type": "address"
-				},
-				{
-					"name": "_destination",
-					"type": "address"
-				},
-				{
-					"name": "_attotokens",
-					"type": "uint256"
-				}
-			],
-			"name": "trustedFeeWindowTransfer",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bool"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
 			"type": "function"
 		},
 		{
@@ -3919,20 +3919,6 @@
 			],
 			"payable": false,
 			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
 			"type": "function"
 		},
 		{
@@ -4502,7 +4488,7 @@
 			"type": "function"
 		}
 	],
-	"FeeWindowFactory": [
+	"DisputeWindowFactory": [
 		{
 			"constant": false,
 			"inputs": [
@@ -4515,11 +4501,11 @@
 					"type": "address"
 				},
 				{
-					"name": "_feeWindowId",
+					"name": "_disputeWindowId",
 					"type": "uint256"
 				}
 			],
-			"name": "createFeeWindow",
+			"name": "createDisputeWindow",
 			"outputs": [
 				{
 					"name": "",
@@ -4750,7 +4736,7 @@
 			"type": "function"
 		}
 	],
-	"Delegator": [
+	"DelegationTarget": [
 		{
 			"constant": true,
 			"inputs": [],
@@ -4797,26 +4783,6 @@
 			"payable": false,
 			"stateMutability": "view",
 			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"name": "_controller",
-					"type": "address"
-				},
-				{
-					"name": "_controllerLookupName",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
-			"type": "constructor"
-		},
-		{
-			"payable": true,
-			"stateMutability": "payable",
-			"type": "fallback"
 		}
 	],
 	"Map": [
@@ -4993,20 +4959,6 @@
 				{
 					"name": "",
 					"type": "uint256"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
 				}
 			],
 			"payable": false,
@@ -5627,20 +5579,6 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
 			"name": "getRoundType",
 			"outputs": [
 				{
@@ -6103,20 +6041,6 @@
 			],
 			"payable": false,
 			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
 			"type": "function"
 		},
 		{
@@ -6611,20 +6535,6 @@
 			"type": "function"
 		},
 		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
 			"constant": false,
 			"inputs": [
 				{
@@ -6838,7 +6748,7 @@
 			"type": "event"
 		}
 	],
-	"FeeWindow": [
+	"DisputeWindow": [
 		{
 			"constant": true,
 			"inputs": [],
@@ -6987,20 +6897,6 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
 			"name": "getStartTime",
 			"outputs": [
 				{
@@ -7020,7 +6916,7 @@
 					"type": "address"
 				},
 				{
-					"name": "_feeWindowId",
+					"name": "_disputeWindowId",
 					"type": "uint256"
 				}
 			],
@@ -7323,20 +7219,6 @@
 			"type": "function"
 		},
 		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
 			"constant": false,
 			"inputs": [
 				{
@@ -7620,20 +7502,6 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
 			"name": "getInitialized",
 			"outputs": [
 				{
@@ -7702,6 +7570,20 @@
 				{
 					"name": "",
 					"type": "uint256"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "getDisputeWindow",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
 				}
 			],
 			"payable": false,
@@ -8293,20 +8175,6 @@
 		},
 		{
 			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
 			"inputs": [
 				{
 					"name": "_payoutDistributionHash",
@@ -8481,20 +8349,6 @@
 				{
 					"name": "",
 					"type": "bool"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "getFeeWindow",
-			"outputs": [
-				{
-					"name": "",
-					"type": "address"
 				}
 			],
 			"payable": false,
@@ -8784,6 +8638,33 @@
 		},
 		{
 			"constant": false,
+			"inputs": [
+				{
+					"name": "_source",
+					"type": "address"
+				},
+				{
+					"name": "_destination",
+					"type": "address"
+				},
+				{
+					"name": "_attotokens",
+					"type": "uint256"
+				}
+			],
+			"name": "trustedDisputeWindowTransfer",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
 			"inputs": [],
 			"name": "migrateFromLegacyReputationToken",
 			"outputs": [
@@ -8822,33 +8703,6 @@
 			],
 			"payable": false,
 			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [
-				{
-					"name": "_source",
-					"type": "address"
-				},
-				{
-					"name": "_destination",
-					"type": "address"
-				},
-				{
-					"name": "_attotokens",
-					"type": "uint256"
-				}
-			],
-			"name": "trustedFeeWindowTransfer",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bool"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
 			"type": "function"
 		},
 		{
@@ -9015,20 +8869,6 @@
 			],
 			"payable": false,
 			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
 			"type": "function"
 		},
 		{
@@ -9293,6 +9133,39 @@
 	"Universe": [
 		{
 			"constant": true,
+			"inputs": [
+				{
+					"name": "_shadyDisputeWindow",
+					"type": "address"
+				}
+			],
+			"name": "isContainerForDisputeWindow",
+			"outputs": [
+				{
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [],
+			"name": "getOrCreateNextDisputeWindow",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": true,
 			"inputs": [],
 			"name": "getDisputeThresholdForDisputePacing",
 			"outputs": [
@@ -9326,20 +9199,6 @@
 		},
 		{
 			"constant": false,
-			"inputs": [],
-			"name": "getOrCreateNextFeeWindow",
-			"outputs": [
-				{
-					"name": "",
-					"type": "address"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": false,
 			"inputs": [
 				{
 					"name": "_amount",
@@ -9351,6 +9210,25 @@
 				{
 					"name": "",
 					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"constant": false,
+			"inputs": [
+				{
+					"name": "_timestamp",
+					"type": "uint256"
+				}
+			],
+			"name": "getOrCreateDisputeWindowByTimestamp",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
 				}
 			],
 			"payable": false,
@@ -9374,7 +9252,7 @@
 		{
 			"constant": false,
 			"inputs": [],
-			"name": "getOrCreatePreviousFeeWindow",
+			"name": "getOrCreatePreviousPreviousDisputeWindow",
 			"outputs": [
 				{
 					"name": "",
@@ -9402,11 +9280,11 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "getDisputeRoundDurationInSeconds",
+			"name": "getNextDisputeWindow",
 			"outputs": [
 				{
 					"name": "",
-					"type": "uint256"
+					"type": "address"
 				}
 			],
 			"payable": false,
@@ -9415,17 +9293,12 @@
 		},
 		{
 			"constant": true,
-			"inputs": [
-				{
-					"name": "_feeWindowId",
-					"type": "uint256"
-				}
-			],
-			"name": "getFeeWindow",
+			"inputs": [],
+			"name": "getDisputeRoundDurationInSeconds",
 			"outputs": [
 				{
 					"name": "",
-					"type": "address"
+					"type": "uint256"
 				}
 			],
 			"payable": false,
@@ -9449,7 +9322,7 @@
 		{
 			"constant": false,
 			"inputs": [],
-			"name": "getOrCreatePreviousPreviousFeeWindow",
+			"name": "getOrCreatePreviousDisputeWindow",
 			"outputs": [
 				{
 					"name": "",
@@ -9473,6 +9346,20 @@
 				{
 					"name": "",
 					"type": "bool"
+				}
+			],
+			"payable": false,
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"constant": true,
+			"inputs": [],
+			"name": "getPreviousDisputeWindow",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
 				}
 			],
 			"payable": false,
@@ -9533,20 +9420,6 @@
 			"type": "function"
 		},
 		{
-			"constant": false,
-			"inputs": [],
-			"name": "getOrCreateCurrentFeeWindow",
-			"outputs": [
-				{
-					"name": "",
-					"type": "address"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
 			"constant": true,
 			"inputs": [],
 			"name": "getOpenInterestInAttoEth",
@@ -9562,12 +9435,17 @@
 		},
 		{
 			"constant": true,
-			"inputs": [],
-			"name": "getRepMarketCapInAttoEth",
+			"inputs": [
+				{
+					"name": "_disputeWindowId",
+					"type": "uint256"
+				}
+			],
+			"name": "getDisputeWindow",
 			"outputs": [
 				{
 					"name": "",
-					"type": "uint256"
+					"type": "address"
 				}
 			],
 			"payable": false,
@@ -9577,11 +9455,11 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "getPreviousFeeWindow",
+			"name": "getRepMarketCapInAttoEth",
 			"outputs": [
 				{
 					"name": "",
-					"type": "address"
+					"type": "uint256"
 				}
 			],
 			"payable": false,
@@ -9702,11 +9580,11 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "getCurrentFeeWindow",
+			"name": "getForkReputationGoal",
 			"outputs": [
 				{
 					"name": "",
-					"type": "address"
+					"type": "uint256"
 				}
 			],
 			"payable": false,
@@ -9715,8 +9593,13 @@
 		},
 		{
 			"constant": true,
-			"inputs": [],
-			"name": "getForkReputationGoal",
+			"inputs": [
+				{
+					"name": "_timestamp",
+					"type": "uint256"
+				}
+			],
+			"name": "getDisputeWindowId",
 			"outputs": [
 				{
 					"name": "",
@@ -9827,6 +9710,20 @@
 			"type": "function"
 		},
 		{
+			"constant": false,
+			"inputs": [],
+			"name": "getOrCreateCurrentDisputeWindow",
+			"outputs": [
+				{
+					"name": "",
+					"type": "address"
+				}
+			],
+			"payable": false,
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
 			"constant": true,
 			"inputs": [
 				{
@@ -9834,7 +9731,7 @@
 					"type": "uint256"
 				}
 			],
-			"name": "getFeeWindowByTimestamp",
+			"name": "getDisputeWindowByTimestamp",
 			"outputs": [
 				{
 					"name": "",
@@ -9877,15 +9774,15 @@
 			"constant": false,
 			"inputs": [
 				{
-					"name": "_amount",
-					"type": "uint256"
+					"name": "_disputeWindow",
+					"type": "address"
 				}
 			],
-			"name": "decrementOpenInterest",
+			"name": "getOrCreateDisputeWindowBefore",
 			"outputs": [
 				{
 					"name": "",
-					"type": "bool"
+					"type": "address"
 				}
 			],
 			"payable": false,
@@ -9896,15 +9793,15 @@
 			"constant": false,
 			"inputs": [
 				{
-					"name": "_timestamp",
+					"name": "_amount",
 					"type": "uint256"
 				}
 			],
-			"name": "getOrCreateFeeWindowByTimestamp",
+			"name": "decrementOpenInterest",
 			"outputs": [
 				{
 					"name": "",
-					"type": "address"
+					"type": "bool"
 				}
 			],
 			"payable": false,
@@ -9965,44 +9862,11 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
 			"name": "getParentPayoutDistributionHash",
 			"outputs": [
 				{
 					"name": "",
 					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [
-				{
-					"name": "_shadyFeeWindow",
-					"type": "address"
-				}
-			],
-			"name": "isContainerForFeeWindow",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bool"
 				}
 			],
 			"payable": false,
@@ -10134,25 +9998,6 @@
 		},
 		{
 			"constant": true,
-			"inputs": [
-				{
-					"name": "_timestamp",
-					"type": "uint256"
-				}
-			],
-			"name": "getFeeWindowId",
-			"outputs": [
-				{
-					"name": "",
-					"type": "uint256"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
 			"inputs": [],
 			"name": "getTypeName",
 			"outputs": [
@@ -10197,25 +10042,6 @@
 				}
 			],
 			"name": "createChildUniverse",
-			"outputs": [
-				{
-					"name": "",
-					"type": "address"
-				}
-			],
-			"payable": false,
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": false,
-			"inputs": [
-				{
-					"name": "_feeWindow",
-					"type": "address"
-				}
-			],
-			"name": "getOrCreateFeeWindowBefore",
 			"outputs": [
 				{
 					"name": "",
@@ -10276,11 +10102,11 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "getNextFeeWindow",
+			"name": "getInitialized",
 			"outputs": [
 				{
 					"name": "",
-					"type": "address"
+					"type": "bool"
 				}
 			],
 			"payable": false,
@@ -10290,11 +10116,11 @@
 		{
 			"constant": true,
 			"inputs": [],
-			"name": "getInitialized",
+			"name": "getCurrentDisputeWindow",
 			"outputs": [
 				{
 					"name": "",
-					"type": "bool"
+					"type": "address"
 				}
 			],
 			"payable": false,
@@ -10728,20 +10554,6 @@
 			],
 			"payable": false,
 			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
 			"type": "function"
 		},
 		{
@@ -12041,20 +11853,6 @@
 		},
 		{
 			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"constant": true,
 			"inputs": [
 				{
 					"name": "_orderId",
@@ -12651,20 +12449,6 @@
 			],
 			"payable": false,
 			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"constant": true,
-			"inputs": [],
-			"name": "controllerLookupName",
-			"outputs": [
-				{
-					"name": "",
-					"type": "bytes32"
-				}
-			],
-			"payable": false,
-			"stateMutability": "view",
 			"type": "function"
 		},
 		{
